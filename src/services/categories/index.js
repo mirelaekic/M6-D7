@@ -1,7 +1,7 @@
 const router = require("express").Router();
 /**CREATE MODEL => const Model = require("");*/
 const Model = require("../../utils/model/index");
-const Categories = new Model("categories");
+const Categories = new Model(`categories`);
 
 router.get("/", async(req, res, next) => {
     try {

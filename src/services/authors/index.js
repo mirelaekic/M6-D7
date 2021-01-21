@@ -1,7 +1,8 @@
 const router = require("express").Router();
 /**CREATE MODEL => const Model = require("");*/
 const Model = require("../../utils/model/index");
-const Authors = new Model("authors");
+const Authors = new Model('authors');
+const db = require("../../utils/db")
 
 router.get("/", async(req, res, next) => {
     try {

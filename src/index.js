@@ -1,7 +1,10 @@
 const express = require("express");
 const server = express();
 const cors = require("cors");
-const services = require("./services/index.js");
+const services = require("./services");
+const endpoints = require("express-list-endpoints")
+
+console.log(endpoints(server))
 
 server.use(express.json());
 server.use("/",services);

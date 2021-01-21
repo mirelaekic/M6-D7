@@ -1,11 +1,12 @@
 const router = require("express").Router();
 /**CREATE MODEL => const Model = require("");*/
-const Model = require("../../utils/model/index");
-const Articles = new Model("articles");
+const Model = require("../../utils/model");
+const Articles = new Model('articles');
+const db = require("../../utils/db");
 
 router.get("/", async(req, res, next) => {
     try {
-        const resp = await Articles.findOne();
+        const resp = await Articles.join("authors","authorId");
         res.send(resp);
     } catch (error) {
         console.log(error);
@@ -54,3 +55,12 @@ router.delete("/:id", async(req, res, next) => {
 });
 
 module.exports = router;
+
+/**
+ {
+    "author_name":"Mirela",
+    "author_lastName":"Ekic",
+    "author_email":"mirelaekic@strive.school",
+    "author_country":"Germany"
+}
+ */
